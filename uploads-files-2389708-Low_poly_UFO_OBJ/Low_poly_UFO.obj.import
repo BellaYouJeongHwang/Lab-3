@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bd2neu8grsxjf"
+path="res://.godot/imported/Low_poly_UFO.obj-a2d2f668184a34604c03b61d160f935e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Low_poly_UFO.obj-a2d2f668184a34604c03b61d160f935e.mesh"]
+
+source_file="res://uploads-files-2389708-Low_poly_UFO_OBJ/Low_poly_UFO.obj"
+dest_files=["res://.godot/imported/Low_poly_UFO.obj-a2d2f668184a34604c03b61d160f935e.mesh", "res://.godot/imported/Low_poly_UFO.obj-a2d2f668184a34604c03b61d160f935e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

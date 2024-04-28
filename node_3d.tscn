@@ -1,0 +1,156 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpuit8lbt8rks"]
+
+[ext_resource type="ArrayMesh" uid="uid://bd2neu8grsxjf" path="res://uploads-files-2389708-Low_poly_UFO_OBJ/Low_poly_UFO.obj" id="1_bv883"]
+[ext_resource type="Script" path="res://Lab 3/MeshInstance3D.gd" id="2_bebpo"]
+[ext_resource type="Script" path="res://Lab 3/AnimationPlayer.gd" id="2_eoeur"]
+[ext_resource type="Texture2D" uid="uid://qmnt76q62ywp" path="res://360_F_429017659_qJnUMaTTFXbwnyDDW8eRSKBISvm7krtQ.jpg" id="4_06oux"]
+[ext_resource type="ArrayMesh" uid="uid://bdcci66n7ki45" path="res://uploads-files-4462272-Astreoid-8.obj" id="4_nb5go"]
+[ext_resource type="Texture2D" uid="uid://blyo34fgrrrvx" path="res://space.jpeg" id="6_a5juf"]
+
+[sub_resource type="Animation" id="Animation_ed7cr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.42661, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m0i1k"]
+resource_name = "Take off"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.42661, 0), Vector3(0, 0.0716125, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7gphs"]
+resource_name = "new_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 2.46229),
+"update": 0,
+"values": [Vector3(0, -1.42661, 0), Vector3(0, 0.41507, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fgjg"]
+_data = {
+"RESET": SubResource("Animation_ed7cr"),
+"Take off": SubResource("Animation_m0i1k"),
+"new_animation": SubResource("Animation_7gphs")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuy62"]
+albedo_texture = ExtResource("4_06oux")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vth44"]
+albedo_texture = ExtResource("6_a5juf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_v51i0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = -228.0
+offset_top = 429.0
+offset_right = 566.0
+offset_bottom = 617.0
+text = "Escape from the meteorites and
+escape into the open space
+
+Press \"Enter\" if you want
+to make an emergency escape"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.15695, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -1.42661, 0)
+mesh = ExtResource("1_bv883")
+script = ExtResource("2_bebpo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance3D"]
+libraries = {
+"": SubResource("AnimationLibrary_8fgjg")
+}
+speed_scale = 2.0
+script = ExtResource("2_eoeur")
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D"]
+transform = Transform3D(33.3333, 0, 0, 0, 28.7493, 16.8698, 0, -16.8698, 28.7493, 0, 134.674, 139.517)
+fov = 63.807
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.19965, -3.63032e-16, 0.0258457, 4.18544e-16, 1.067, -3.72156e-16, -0.0290674, 3.81061e-16, 1.06669, -12.8842, -1.80581, -13.0547)
+material_override = SubResource("StandardMaterial3D_fuy62")
+mesh = ExtResource("4_nb5go")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D2"]
+transform = Transform3D(0.150213, -4.1889e-16, -1.05861, 1.24559e-15, 1.067, -2.82474e-16, 1.19056, -1.06347e-15, 0.133564, 7.80188, -1.80581, -13.0547)
+material_override = SubResource("StandardMaterial3D_fuy62")
+mesh = ExtResource("4_nb5go")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D2"]
+transform = Transform3D(1.2, -3.72156e-16, 3.72156e-16, 4.18544e-16, 1.067, -3.72156e-16, -4.18544e-16, 3.72156e-16, 1.067, -5.73419, -1.80581, -22.1012)
+material_override = SubResource("StandardMaterial3D_fuy62")
+mesh = ExtResource("4_nb5go")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D2/MeshInstance3D3"]
+transform = Transform3D(0.150213, -4.1889e-16, -1.05861, 1.24559e-15, 1.067, -2.82473e-16, 1.19056, -1.06347e-15, 0.133564, 15.2243, -0.998431, -24.292)
+material_override = SubResource("StandardMaterial3D_fuy62")
+mesh = ExtResource("4_nb5go")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D2/MeshInstance3D3"]
+transform = Transform3D(0.92344, -7.94422e-16, -0.681393, 1.18361e-15, 1.067, 2.4193e-17, 0.766328, -6.90701e-16, 0.821092, -15.5929, 0.777229, -4.88034)
+material_override = SubResource("StandardMaterial3D_fuy62")
+mesh = ExtResource("4_nb5go")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D2/MeshInstance3D3/MeshInstance3D3"]
+transform = Transform3D(0.150213, -4.1889e-16, -1.05861, 1.24559e-15, 1.067, -2.82474e-16, 1.19056, -1.06346e-15, 0.133564, 7.80188, -2.53652, -13.0547)
+material_override = SubResource("StandardMaterial3D_fuy62")
+mesh = ExtResource("4_nb5go")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(80, 0, 0, 0, 1, 0, 0, 0, 80, -18.2032, -7.54308, -19.0505)
+material_override = SubResource("StandardMaterial3D_vth44")
+mesh = SubResource("BoxMesh_v51i0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(6400, 0, 0, 0, 1, 0, 0, 0, 6400, 0, -36.4282, 0)
+material_override = SubResource("StandardMaterial3D_vth44")
+mesh = SubResource("BoxMesh_v51i0")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.77341, 0)
+light_color = Color(0.964706, 1, 1, 1)
+light_energy = 4.864
